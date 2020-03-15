@@ -24,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		713D66C6241DC45A00DAB6A4 /* Agent.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Agent.playground; path = ../Agent.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		71811917241DB4050062B81C /* Agent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Agent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7181191A241DB4050062B81C /* Agent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Agent.h; sourceTree = "<group>"; };
 		7181191B241DB4050062B81C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,7 +32,6 @@
 		71811925241DB4050062B81C /* AgentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentTests.swift; sourceTree = "<group>"; };
 		71811927241DB4050062B81C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71811932241DB4CA0062B81C /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
-		71811934241DB63B0062B81C /* Agent.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Agent.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 		7181190D241DB4050062B81C = {
 			isa = PBXGroup;
 			children = (
-				71811934241DB63B0062B81C /* Agent.playground */,
+				713D66C6241DC45A00DAB6A4 /* Agent.playground */,
 				71811919241DB4050062B81C /* Agent */,
 				71811924241DB4050062B81C /* AgentTests */,
 				71811918241DB4050062B81C /* Products */,
