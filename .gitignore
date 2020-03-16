@@ -1,13 +1,11 @@
 
-## OS X Finder
+## OS
 .DS_Store
 
-## Build generated
+## Xcode
 build/
 DerivedData
-
-## Xcode
 xcuserdata/
 
-# Swift Package Manager
+## Swift Package Manager
 .build/
