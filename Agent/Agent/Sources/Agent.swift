@@ -37,4 +37,10 @@ public struct Agent {
         self.session = session
     }
     
+    public func get(_ path: String, query: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+        let request = Request(url: url, method: .get, query: query, params: nil, headers: headers, session: session)
+        
+        request.go(completion: completion)
+    }
+    
 }

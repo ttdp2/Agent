@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		717BAC96241F1F9900FD6ECB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717BAC95241F1F9900FD6ECB /* Request.swift */; };
+		717BAC98241F1FA400FD6ECB /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717BAC97241F1FA400FD6ECB /* Response.swift */; };
+		717BAC9A241F20AE00FD6ECB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717BAC99241F20AE00FD6ECB /* Task.swift */; };
 		71811921241DB4050062B81C /* Agent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71811917241DB4050062B81C /* Agent.framework */; };
 		71811926241DB4050062B81C /* AgentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71811925241DB4050062B81C /* AgentTests.swift */; };
 		71811928241DB4050062B81C /* Agent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7181191A241DB4050062B81C /* Agent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,6 +28,9 @@
 
 /* Begin PBXFileReference section */
 		713D66C6241DC45A00DAB6A4 /* Agent.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Agent.playground; path = ../Agent.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		717BAC95241F1F9900FD6ECB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		717BAC97241F1FA400FD6ECB /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		717BAC99241F20AE00FD6ECB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		71811917241DB4050062B81C /* Agent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Agent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7181191A241DB4050062B81C /* Agent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Agent.h; sourceTree = "<group>"; };
 		7181191B241DB4050062B81C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				71811932241DB4CA0062B81C /* Agent.swift */,
+				717BAC95241F1F9900FD6ECB /* Request.swift */,
+				717BAC97241F1FA400FD6ECB /* Response.swift */,
+				717BAC99241F20AE00FD6ECB /* Task.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -209,7 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717BAC9A241F20AE00FD6ECB /* Task.swift in Sources */,
 				71811933241DB4CA0062B81C /* Agent.swift in Sources */,
+				717BAC98241F1FA400FD6ECB /* Response.swift in Sources */,
+				717BAC96241F1F9900FD6ECB /* Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

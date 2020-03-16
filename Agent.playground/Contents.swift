@@ -1,7 +1,7 @@
 import Agent
 
-let agent = Agent(scheme: .https, host: "www.ttdp.com", session: .standard)
-let agent2 = Agent(host: "www.ttop.com")
+let agent = Agent(scheme: .https, host: "jsonplaceholder.typicode.com", session: .standard)
 
-print(agent.url)
-print(agent2.url)
+agent.get("") { response in
+    print(response.statusCode)
+}

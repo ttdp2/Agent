@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+public struct Response {
+    
+    public let data: Data?
+    public let urlResponse: URLResponse?
+    public let error: Error?
+    
+    public var statusCode: Int {
+        return (urlResponse as? HTTPURLResponse)?.statusCode ?? 0
+    }
+    
+}
