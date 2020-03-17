@@ -4,4 +4,5 @@ let agent = Agent(scheme: .https, host: "jsonplaceholder.typicode.com", session:
 
 agent.get("") { response in
     print(response.statusCode)
+    print(response.headerFields)
 }

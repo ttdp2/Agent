@@ -18,4 +18,8 @@ public struct Response {
         return (urlResponse as? HTTPURLResponse)?.statusCode ?? 0
     }
     
+    public var headerFields: [String: Any] {
+        return (urlResponse as? HTTPURLResponse)?.allHeaderFields as? [String: Any] ?? [:]
+    }
+    
 }
