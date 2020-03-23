@@ -15,7 +15,7 @@ public enum Scheme: String {
     case ws
 }
 
-public enum Session {
+public enum SessionConfig: Equatable {
     case standard
     case ephemeral
     case background(String)
@@ -23,24 +23,51 @@ public enum Session {
 
 public struct Agent {
     
+    public static var timeourForRequest: TimeInterval = 60 // 60 seconds
+    public static var timeoutForResource: TimeInterval = 60 * 60 * 24 * 7 // 7 days
+    
     let scheme: Scheme
     let host: String
-    let session: Session
+    let session: URLSession
     
     public var url: String {
         return scheme.rawValue + "://" + host
     }
     
-    public init(scheme: Scheme = .https, host: String, session: Session = .standard) {
+    public init(scheme: Scheme = .https, host: String, session: SessionConfig = .standard) {
         self.scheme = scheme
         self.host = host
-        self.session = session
+        self.session = Session.shared.getURLSession(config: session, timeoutForRequest: Agent.timeourForRequest, timeoutForResource: Agent.timeoutForResource)
     }
     
     public func get(_ path: String, query: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
-        let request = Request(url: url, method: .get, query: query, params: nil, headers: headers, session: session)
+        do {
+            let request = try DataRequest(urlString: url, method: .get, query: query, params: nil, body: nil, headers: headers, urlSession: session)
+            
+            try request.go(completion: completion)
+        } catch(let error) {
+            completion(Response(data: nil, urlResponse: nil, error: error))
+        }
+    }
+    
+    public func put(_ path: String, params: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         
-        request.go(completion: completion)
+    }
+    
+    public func put(_ path: String, body: Data? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+        
+    }
+    
+    public func post(_ path: String, params: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+        
+    }
+    
+    public func post(_ path: String, body: Data? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+        
+    }
+    
+    public func delete() {
+        
     }
     
 }
