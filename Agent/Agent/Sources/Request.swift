@@ -17,34 +17,36 @@ enum Method: String {
     case delete = "DELETE"
 }
 
-struct DataRequest {
+class DataRequest {
     
-    let urlString: URL?
-    let method: String
-    let query: [String: Any]?
-    let params: [String: Any]?
-    let body: Data?
-    let headers: [String: String]?
     let urlSession: URLSession
+    var urlRequest: URLRequest
     
-    init(urlString: String, method: Method, query: [String: Any]?, params: [String: Any]?, body: Data?, headers: [String: String]?, urlSession: URLSession) throws {
-        self.urlString = URL(string: urlString)
-        self.method = method.rawValue
-        self.query = query
-        self.params = params
-        self.body = body
-        self.headers = headers
-        self.urlSession = urlSession
+    init(base: String, path: String, method: Method, querys: [String: Any]? = nil, params: [String: Any]? = nil, body: Data? = nil, headers: [String: String]? = nil, session: URLSession) throws {
+        let encodedURL = try Encoding.encode(base: base, path: path, querys: querys)
+        
+        urlSession = session
+        urlRequest = URLRequest(url: encodedURL)
+        urlRequest.httpMethod = method.rawValue
+        urlRequest.httpBody = body
+
+        if let params = params {
+            guard body == nil else {
+                throw RequestError.paramsWithBody
+            }
+            
+            let bodyData = try JSONSerialization.data(withJSONObject: params, options: [])
+            urlRequest.httpBody = bodyData
+        }
+        
+        if let headers = headers {
+            for (key, value) in headers {
+                urlRequest.setValue(value, forHTTPHeaderField: key)
+            }
+        }
     }
     
     func go(completion: @escaping (Response) -> Void) throws {
-        guard let url = urlString else {
-            throw RequestError.invalidURL
-        }
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = method
-        
         let task = urlSession.dataTask(with: urlRequest) { data, urlResponse, error in
             completion(Response(data: data, urlResponse: urlResponse, error: error))
         }

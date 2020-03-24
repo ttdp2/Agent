@@ -15,7 +15,7 @@ public enum Scheme: String {
     case ws
 }
 
-public enum SessionConfig: Equatable {
+public enum SessionConfig {
     case standard
     case ephemeral
     case background(String)
@@ -30,7 +30,7 @@ public struct Agent {
     let host: String
     let session: URLSession
     
-    public var url: String {
+    public var base: String {
         return scheme.rawValue + "://" + host
     }
     
@@ -40,21 +40,49 @@ public struct Agent {
         self.session = Session.shared.getURLSession(config: session, timeoutForRequest: Agent.timeourForRequest, timeoutForResource: Agent.timeoutForResource)
     }
     
-    public func get(_ path: String, query: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+    public func get(_ path: String, querys: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         do {
-            let request = try DataRequest(urlString: url, method: .get, query: query, params: nil, body: nil, headers: headers, urlSession: session)
-            
-            try request.go(completion: completion)
-        } catch(let error) {
-            completion(Response(data: nil, urlResponse: nil, error: error))
+            try DataRequest(base: base,
+                            path: path,
+                            method: .get,
+                            querys: querys,
+                            headers: headers,
+                            session: session)
+                .go(completion: completion)
+        } catch {
+            completion(Response(error: error))
         }
     }
     
     public func put(_ path: String, params: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
-        
+        do {
+            try DataRequest(base: base,
+                            path: path,
+                            method: .put,
+                            params: params,
+                            headers: headers,
+                            session: session)
+                .go(completion: completion)
+        } catch {
+            completion(Response(error: error))
+        }
     }
     
     public func put(_ path: String, body: Data? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+        do {
+            try DataRequest(base: base,
+                            path: path,
+                            method: .put,
+                            body: body,
+                            headers: headers,
+                            session: session)
+                .go(completion: completion)
+        } catch {
+            completion(Response(error: error))
+        }
+    }
+    
+    func put<T: Encodable>(_ path: String, encoder: T, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         
     }
     

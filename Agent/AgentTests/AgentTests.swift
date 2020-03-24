@@ -18,22 +18,22 @@ class AgentTests: XCTestCase {
     }
     
     func testInit() {
-        XCTAssertEqual(sut.url, "https://reqres.in")
+        XCTAssertEqual(sut.base, "https://reqres.in")
     }
     
     func testInitWithParams() {
         var agent = Agent(scheme: .http, host: "www.ttdp.com", session: .standard)
-        XCTAssertEqual(agent.url, "http://www.ttdp.com")
+        XCTAssertEqual(agent.base, "http://www.ttdp.com")
         
         agent = Agent(scheme: .https, host: "www.ttdp.com", session: .ephemeral)
-        XCTAssertEqual(agent.url, "https://www.ttdp.com")
+        XCTAssertEqual(agent.base, "https://www.ttdp.com")
         
         agent = Agent(scheme: .ws, host: "www.ttdp.com", session: .background("bg"))
-        XCTAssertEqual(agent.url, "ws://www.ttdp.com")
+        XCTAssertEqual(agent.base, "ws://www.ttdp.com")
         XCTAssertEqual(agent.session.configuration.identifier, "bg")
         
         agent = Agent(scheme: .wss, host: "www.ttdp.com")
-        XCTAssertEqual(agent.url, "wss://www.ttdp.com")
+        XCTAssertEqual(agent.base, "wss://www.ttdp.com")
     }
 
     func testGet() {

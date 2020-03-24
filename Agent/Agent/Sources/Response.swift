@@ -23,3 +23,9 @@ public struct Response {
     }
     
 }
+
+extension Response {
+    init(error: Error) {
+        self.init(data: nil, urlResponse: nil, error: error)
+    }
+}
