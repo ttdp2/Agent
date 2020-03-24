@@ -1,5 +1,5 @@
 # Agent
-A Swift library for HTTP and WebSocket
+A Swift library for HTTP and WebSocket requests ⚡️
 
 ## Features
 - [x] HTTP GET PUT POST DELETE Methods
