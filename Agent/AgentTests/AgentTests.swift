@@ -18,10 +18,6 @@ class AgentTests: XCTestCase {
     }
     
     func testInit() {
-        XCTAssertEqual(sut.base, "https://reqres.in")
-    }
-    
-    func testInitWithParams() {
         var agent = Agent(scheme: .http, host: "www.ttdp.com", session: .standard)
         XCTAssertEqual(agent.base, "http://www.ttdp.com")
         
@@ -37,19 +33,47 @@ class AgentTests: XCTestCase {
     }
 
     func testGet() {
-        sut.get("books") { _ in }
+        let path = "api/users"
+        let querys = ["page": 2]
+        let headers = ["Authorization": "Bearer ABCDE..."]
+        
+        sut.get(path) { _ in }
+        sut.get(path, querys: querys) { _ in }
+        sut.get(path, headers: headers) { _ in }
+        sut.get(path, querys: querys, headers: headers) { _ in }
+        sut.get("api/users?page=2") { _ in }
     }
     
     func testPut() {
+        let path = "api/users/2"
+        let headers = ["Authorization": "Bearer ABCDE..."]
+        let params = ["name": "morpheus", "job": "zion resident"]
+        let data = try? JSONSerialization.data(withJSONObject: params)
         
+        sut.put(path, params: params) { _ in }
+        sut.put(path, params: params, headers: headers) { _ in }
+        sut.put(path, body: data) { _ in }
+        sut.put(path, body: data, headers: headers) { _ in }
     }
     
     func testPost() {
+        let path = "api/users"
+        let headers = ["Authorization": "Bearer ABCDE..."]
+        let params = ["name": "morpheus", "job": "leader"]
+        let data = try? JSONSerialization.data(withJSONObject: params)
         
+        sut.post(path, params: params) { _ in }
+        sut.post(path, params: params, headers: headers) { _ in }
+        sut.post(path, body: data) { _ in }
+        sut.post(path, body: data, headers: headers) { _ in }
     }
     
     func testDelete() {
+        let path = "api/users/2"
+        let headers = ["Authorization": "Bearer ABCDE..."]
         
+        sut.delete(path) { _ in }
+        sut.delete(path, headers: headers) { _ in }
     }
 
 }

@@ -22,6 +22,18 @@ public struct Response {
         return (urlResponse as? HTTPURLResponse)?.allHeaderFields as? [String: Any] ?? [:]
     }
     
+    public var json: [String: Any]? {
+        return parseData()
+    }
+    
+    private func parseData() -> [String: Any]? {
+        if let jsonData = data {
+            return try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any]
+        } else {
+            return nil
+        }
+    }
+    
 }
 
 extension Response {
