@@ -14,7 +14,7 @@ class Session: NSObject {
     
     private override init() {}
     
-    func getURLSession(config: SessionConfig, timeoutForRequest: TimeInterval, timeoutForResource: TimeInterval) -> URLSession {
+    func getURLSession(config: Config, timeoutForRequest: TimeInterval, timeoutForResource: TimeInterval) -> URLSession {
         let configuration = getURLSessionConfiguration(config: config, timeoutForRequest: timeoutForRequest, timeoutForResource: timeoutForResource)
         
         switch config {
@@ -27,7 +27,7 @@ class Session: NSObject {
         }
     }
     
-    private func getURLSessionConfiguration(config: SessionConfig, timeoutForRequest: TimeInterval, timeoutForResource: TimeInterval) -> URLSessionConfiguration {
+    private func getURLSessionConfiguration(config: Config, timeoutForRequest: TimeInterval, timeoutForResource: TimeInterval) -> URLSessionConfiguration {
         let sessionConfig: URLSessionConfiguration
         
         switch config {

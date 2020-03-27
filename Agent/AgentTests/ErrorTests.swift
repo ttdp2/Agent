@@ -18,12 +18,25 @@ class ErrorTests: XCTestCase, WebSocketDelegate {
     func webSocket(ws: WebSocket, didReceive data: Data) {
         
     }
+    
+    func webSocket(ws: WebSocket, error: Error) {
+        print(error)
+    }
 
-    func testNeedSocketScheme() {
-        let socket = Agent(scheme: .wss, host: "echo.websocket.org").socket
-        socket.delegate = self
+    func testSocketSchemeError() {
+        let agent = Agent(scheme: .http, host: "echo.websocket.org")
+        let sut = agent.webSocket
         
-        socket.send("Hello")
+        sut.delegate = self
+        sut.send("Hello")
+    }
+    
+    func testSocketSessionError() {
+        let agent = Agent(scheme: .ws, host: "echo.websocket.org", session: .background("bg"))
+        let sut = agent.webSocket
+        
+        sut.delegate = self
+        sut.send("Hello")
     }
     
 }

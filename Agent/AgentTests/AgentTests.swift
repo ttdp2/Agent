@@ -77,7 +77,7 @@ class AgentTests: XCTestCase {
     }
     
     func testWebSocket() {
-        let socket = Agent(scheme: .ws, host: "echo.websocket.org").socket
+        let socket = Agent(scheme: .ws, host: "echo.websocket.org").webSocket
         socket.send("Hello")
         
         let helloDate = "Hello".data(using: .utf8)!

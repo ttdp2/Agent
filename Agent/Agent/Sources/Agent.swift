@@ -15,7 +15,7 @@ public enum Scheme: String {
     case ws
 }
 
-public enum SessionConfig {
+public enum Config: Equatable {
     case standard
     case ephemeral
     case background(String)
@@ -29,17 +29,17 @@ public struct Agent {
     let scheme: Scheme
     let host: String
     let session: URLSession
-    let socket: WebSocket
+    let webSocket: WebSocket
     
     var base: String {
         return scheme.rawValue + "://" + host
     }
     
-    init(scheme: Scheme = .https, host: String, session: SessionConfig = .standard) {
+    init(scheme: Scheme = .https, host: String, session config: Config = .standard) {
         self.scheme = scheme
         self.host = host
-        self.session = Session.shared.getURLSession(config: session, timeoutForRequest: Agent.timeourForRequest, timeoutForResource: Agent.timeoutForResource)
-        self.socket = WebSocket(scheme: scheme, host: host, session: self.session)
+        self.session = Session.shared.getURLSession(config: config, timeoutForRequest: Agent.timeourForRequest, timeoutForResource: Agent.timeoutForResource)
+        self.webSocket = WebSocket(scheme: scheme, host: host, config: config)
     }
     
     func get(_ path: String, querys: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
