@@ -13,6 +13,8 @@
 		712F1BA224287AFD009EC7B3 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F1BA124287AFD009EC7B3 /* Error.swift */; };
 		712F1BA42428975B009EC7B3 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F1BA32428975B009EC7B3 /* Session.swift */; };
 		712F1BA62428A37E009EC7B3 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F1BA52428A37E009EC7B3 /* SessionTests.swift */; };
+		71737613242DF05000EDA832 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71737612242DF05000EDA832 /* Socket.swift */; };
+		71737615242DF9C700EDA832 /* ErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71737614242DF9C700EDA832 /* ErrorTests.swift */; };
 		717BAC96241F1F9900FD6ECB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717BAC95241F1F9900FD6ECB /* Request.swift */; };
 		717BAC98241F1FA400FD6ECB /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717BAC97241F1FA400FD6ECB /* Response.swift */; };
 		717BAC9A241F20AE00FD6ECB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717BAC99241F20AE00FD6ECB /* Task.swift */; };
@@ -40,6 +42,8 @@
 		712F1BA32428975B009EC7B3 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		712F1BA52428A37E009EC7B3 /* SessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
 		713D66C6241DC45A00DAB6A4 /* Agent.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Agent.playground; path = ../Agent.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		71737612242DF05000EDA832 /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		71737614242DF9C700EDA832 /* ErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTests.swift; sourceTree = "<group>"; };
 		717BAC95241F1F9900FD6ECB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		717BAC97241F1FA400FD6ECB /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		717BAC99241F20AE00FD6ECB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				712F1BA52428A37E009EC7B3 /* SessionTests.swift */,
 				712F1B9F24286659009EC7B3 /* RequestTests.swift */,
 				711CAACE24299ACE001261EA /* EncodingTests.swift */,
+				71737614242DF9C700EDA832 /* ErrorTests.swift */,
 				71811927241DB4050062B81C /* Info.plist */,
 			);
 			path = AgentTests;
@@ -116,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				71811932241DB4CA0062B81C /* Agent.swift */,
+				71737612242DF05000EDA832 /* Socket.swift */,
 				712F1BA32428975B009EC7B3 /* Session.swift */,
 				717BAC95241F1F9900FD6ECB /* Request.swift */,
 				717BAC97241F1FA400FD6ECB /* Response.swift */,
@@ -237,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				717BAC9A241F20AE00FD6ECB /* Task.swift in Sources */,
+				71737613242DF05000EDA832 /* Socket.swift in Sources */,
 				71811933241DB4CA0062B81C /* Agent.swift in Sources */,
 				712F1BA42428975B009EC7B3 /* Session.swift in Sources */,
 				711CAACD24298C0F001261EA /* Encoding.swift in Sources */,
@@ -253,6 +260,7 @@
 				711CAACF24299ACE001261EA /* EncodingTests.swift in Sources */,
 				712F1BA62428A37E009EC7B3 /* SessionTests.swift in Sources */,
 				71811926241DB4050062B81C /* AgentTests.swift in Sources */,
+				71737615242DF9C700EDA832 /* ErrorTests.swift in Sources */,
 				712F1BA024286659009EC7B3 /* RequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

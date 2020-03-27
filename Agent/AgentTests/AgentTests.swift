@@ -75,5 +75,13 @@ class AgentTests: XCTestCase {
         sut.delete(path) { _ in }
         sut.delete(path, headers: headers) { _ in }
     }
+    
+    func testWebSocket() {
+        let socket = Agent(scheme: .ws, host: "echo.websocket.org").socket
+        socket.send("Hello")
+        
+        let helloDate = "Hello".data(using: .utf8)!
+        socket.send(helloDate)
+    }
 
 }

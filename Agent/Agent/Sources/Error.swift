@@ -12,4 +12,5 @@ public enum RequestError: Error {
     case paramsWithBody
     case invalidURL(String)
     case encodingFailed(String)
+    case needSocketScheme
 }
