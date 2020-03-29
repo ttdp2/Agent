@@ -34,3 +34,24 @@ agent.delete("api/users/2") { response in
     let status = response.statusCode
     print(status)
 }
+
+class WebSocketHandler: WebSocketDelegate {
+    func webSocket(ws: WebSocket, didReceive text: String) {
+        print(text)
+        ws.send("World")
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {
+            ws.close()
+        }
+    }
+    func webSocket(ws: WebSocket, didReceive data: Data) {
+        print(data)
+    }
+    func webSocket(ws: WebSocket, error: Error) {
+        print(error)
+    }
+}
+
+let wsHandler = WebSocketHandler()
+let webSocket = Agent(scheme: .wss, host: "echo.websocket.org").webSocket
+webSocket.delegate = wsHandler
+webSocket.send("Hello")

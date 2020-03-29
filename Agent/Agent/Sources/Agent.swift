@@ -23,26 +23,27 @@ public enum Config: Equatable {
 
 public struct Agent {
     
-    static var timeourForRequest: TimeInterval = 60 // 60 seconds
-    static var timeoutForResource: TimeInterval = 60 * 60 * 24 * 7 // 7 days
+    public static var timeourForRequest: TimeInterval = 60 // 60 seconds
+    public static var timeoutForResource: TimeInterval = 60 * 60 * 24 * 7 // 7 days
     
     let scheme: Scheme
     let host: String
     let session: URLSession
-    let webSocket: WebSocket
+    
+    public let webSocket: WebSocket
     
     var base: String {
         return scheme.rawValue + "://" + host
     }
     
-    init(scheme: Scheme = .https, host: String, session config: Config = .standard) {
+    public init(scheme: Scheme = .https, host: String, session config: Config = .standard) {
         self.scheme = scheme
         self.host = host
         self.session = Session.shared.getURLSession(config: config, timeoutForRequest: Agent.timeourForRequest, timeoutForResource: Agent.timeoutForResource)
         self.webSocket = WebSocket(scheme: scheme, host: host, config: config)
     }
     
-    func get(_ path: String, querys: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+    public func get(_ path: String, querys: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         do {
             try DataRequest(base: base,
                             path: path,
@@ -56,7 +57,7 @@ public struct Agent {
         }
     }
     
-    func put(_ path: String, params: [String: Any]?, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+    public func put(_ path: String, params: [String: Any]?, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         do {
             try DataRequest(base: base,
                             path: path,
@@ -70,7 +71,7 @@ public struct Agent {
         }
     }
     
-    func put(_ path: String, body: Data?, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+    public func put(_ path: String, body: Data?, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         do {
             try DataRequest(base: base,
                             path: path,
@@ -84,11 +85,11 @@ public struct Agent {
         }
     }
     
-    func put<T: Encodable>(_ path: String, encoder: T, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+    public func put<T: Encodable>(_ path: String, encoder: T, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         
     }
     
-    func post(_ path: String, params: [String: Any]?, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+    public func post(_ path: String, params: [String: Any]?, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         do {
             try DataRequest(base: base,
                             path: path,
@@ -102,7 +103,7 @@ public struct Agent {
         }
     }
     
-    func post(_ path: String, body: Data?, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+    public func post(_ path: String, body: Data?, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         do {
             try DataRequest(base: base,
                             path: path,
@@ -116,7 +117,7 @@ public struct Agent {
         }
     }
     
-    func delete(_ path: String, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
+    public func delete(_ path: String, headers: [String: String]? = nil, completion: @escaping (Response) -> Void) {
         do {
             try DataRequest(base: base,
                             path: path,

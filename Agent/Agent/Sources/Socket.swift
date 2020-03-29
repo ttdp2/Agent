@@ -19,7 +19,7 @@ public class WebSocket {
     private let socketTask: URLSessionWebSocketTask?
     private var error: RequestError?
     
-    var delegate: WebSocketDelegate?
+    public var delegate: WebSocketDelegate?
     
     init(scheme: Scheme, host: String, config: Config) {
         guard scheme == .ws || scheme == .wss else {
@@ -47,7 +47,7 @@ public class WebSocket {
         listen()
     }
     
-    func send(_ text: String) {
+    public func send(_ text: String) {
         if let error = error {
             delegate?.webSocket(ws: self, error: error)
             return
@@ -62,7 +62,7 @@ public class WebSocket {
         }
     }
     
-    func send(_ data: Data) {
+    public func send(_ data: Data) {
         if let error = error {
             delegate?.webSocket(ws: self, error: error)
             return
@@ -75,6 +75,10 @@ public class WebSocket {
                 self.delegate?.webSocket(ws: self, error: error)
             }
         }
+    }
+    
+    public func close() {
+        socketTask?.cancel()
     }
     
     private func listen() {
