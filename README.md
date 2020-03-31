@@ -3,7 +3,7 @@ A Swift library for HTTP and WebSocket requests ⚡️
 
 ## Features
 - [x] HTTP GET PUT POST DELETE Methods
-- [ ] WebSocket
+- [x] WebSocket
 - [ ] HTTP Fake Request
 - [ ] HTTP File Upload Download Requests
 - [ ] HTTP File Request Group
